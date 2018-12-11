@@ -1,0 +1,35 @@
+caret($direction, $size, $color = currentColor)
+  if !$size[1]
+    $size = $size $size
+
+  if $direction = 'top'
+    $sides = {right: 0, bottom: 1, left: 0}
+    $size = $size[1] $size[0]
+  else if $direction = 'right'
+    $sides = {top: 0, bottom: 0, left: }
+  else if $direction = 'down'
+    $sides = {top: 1, right: 0, left: 0}
+    $size = $size[1] $size[0]
+  else if $direction = 'left'
+    $sides = {top: 0, right: 1, bottom: 0}
+
+  $size[1] = floor($size[1] / 2)
+  for $side, $border in $sides
+    if $border
+      border-{$side} $size[0] solid $color
+    else
+      border-{$side} $size[1] solid transparent
+
+half-size($path)
+  $size = image-size($path)
+  return ($size[0] / 2) ($size[1] / 2)
+
+half-width($path)
+  return half-size($path)[0]
+
+half-height($path)
+  return half-size($path)[1]
+
+half-background($path, $left = center, $top = top, $repeat = no-repeat, $embed = 0)
+  $url = !$embed ? s("url(%s)", $path) : embedurl($path)
+  background s('%s %s %s / %s %s', $url, $left, $top, half-width($path), $repeat)

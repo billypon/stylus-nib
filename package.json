@@ -1,0 +1,11 @@
+{
+  "name": "stylus-nib",
+  "version": "0.0.1",
+  "description": "A small and powerful library for stylus",
+  "author": "billypon <billypon@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/billypon/stylus-nib.git"
+  }
+}
