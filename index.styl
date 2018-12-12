@@ -32,6 +32,7 @@ half-width($path)
 half-height($path)
   return half-size($path)[1]
 
-half-background($path, $left = center, $top = top, $repeat = no-repeat, $embed = 0)
-  $url = !$embed ? s("url(%s)", $path) : embedurl($path)
-  background s('%s %s %s / %s %s', $url, $left, $top, half-width($path), $repeat)
+half-background($path, $color = none, $left = center, $top = top, $repeat = no-repeat, $embed = 0)
+  $background = !$embed ? s("url(%s)", $path) : embedurl($path)
+  $background = $color $background if $color != none
+  background s('%s %s %s / %s %s', $background, $left, $top, half-width($path), $repeat)
