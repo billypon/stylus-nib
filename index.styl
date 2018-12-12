@@ -1,7 +1,9 @@
-caret($direction, $size, $color = currentColor)
-  if !$size[1]
-    $size = $size $size
+around-array($array)
+  push($array, $array[$n < 3 ? 0 : 1]) for $n in range(length($array), 3)
+  return $array
 
+caret($direction, $size, $color = currentColor)
+  $size = $size $size if !$size[1]
   if $direction = 'top'
     $sides = {right: 0, bottom: 1, left: 0}
     $size = $size[1] $size[0]
